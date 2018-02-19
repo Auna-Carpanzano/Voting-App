@@ -9,3 +9,5 @@ var express = require("express"),
 
 // REQUIRE ROUTES
 var voteRoute = require("./routes/votes");
+
+mongoose.connect("mongodb://localhost/voting_app");
