@@ -8,7 +8,8 @@ var express = require("express"),
     methodOverride = require("method-override");
 
 // REQUIRE ROUTES
-var voteRoute = require("./routes/votes");
+var voteRoute = require("./routes/votes"),
+    indexRoute = require("./routes/index");
 
 mongoose.connect("mongodb://localhost/voting_app");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,7 +17,7 @@ app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
-app.use("/", indexRoutes);
-app.use("/votes", voteRoutes);
+app.use("/", indexRoute);
+app.use("/votes", voteRoute);
 
 app.listen(3000);
