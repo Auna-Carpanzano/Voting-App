@@ -18,3 +18,5 @@ app.use(methodOverride("_method"));
 
 app.use("/", indexRoutes);
 app.use("/votes", voteRoutes);
+
+app.listen(3000);
