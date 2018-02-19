@@ -9,6 +9,10 @@ router.get("/", function(req, res) {
 
 // CREATE ROUTE - ADD NEW VOTE
 router.post("/", function(req, res) {
+  var question = req.body.question;
+  var option1 = req.body.option1;
+  var option2 = req.body.option2;
+  var newPoll = {question: question, option1: option1, option2: option2};
   res.redirect("/votes");
 });
 
