@@ -16,7 +16,7 @@ router.get("/new", function(req, res) {
   res.render("votes/new");
 });
 
-// SHOW ROUTE - SHOW INFO ABOUT ONE VOTE
+// READ ROUTE - SHOW INFO ABOUT ONE VOTE
 router.get("/:id", function(req, res) {
   res.render("votes/show");
 });
