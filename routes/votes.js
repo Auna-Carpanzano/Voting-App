@@ -21,4 +21,9 @@ router.get("/:id", function(req, res) {
   res.render("votes/show");
 });
 
+// EDIT ROUTE - SHOW FORM TO EDIT
+router.get("/:id/edit", function(req, res) {
+  res.render("votes/edit");
+});
+
 module.exports = router;
