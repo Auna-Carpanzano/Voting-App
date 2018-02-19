@@ -26,4 +26,13 @@ router.get("/:id/edit", function(req, res) {
   res.render("votes/edit");
 });
 
+// UPDATE ROUTE - SHOW UPDATED VOTE
+router.put("/:id", function(req, res) {
+  if (err) {
+    res.redirect("/votes");
+  } else {
+    res.redirect("/votes/" + req.params.id);
+  }
+});
+
 module.exports = router;
