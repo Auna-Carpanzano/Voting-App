@@ -11,3 +11,4 @@ var express = require("express"),
 var voteRoute = require("./routes/votes");
 
 mongoose.connect("mongodb://localhost/voting_app");
+app.use(bodyParser.urlencoded({extended: true}));
