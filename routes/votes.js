@@ -35,4 +35,9 @@ router.put("/:id", function(req, res) {
   }
 });
 
+// DESTROY ROUTE - DELETE A VOTE
+router.delete(":/id", function(req, res) {
+  res.redirect("/votes");
+});
+
 module.exports = router;
