@@ -13,7 +13,13 @@ router.post("/", function(req, res) {
   var option1 = req.body.option1;
   var option2 = req.body.option2;
   var newPoll = {question: question, option1: option1, option2: option2};
-  res.redirect("/votes");
+  Vote.create(newPoll, function(err, newlyCreatedPoll) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/votes");
+    }
+  });
 });
 
 // NEW ROUTE - SHOW FORM TO CREATE NEW VOTE
