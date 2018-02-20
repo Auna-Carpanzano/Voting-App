@@ -1,10 +1,16 @@
 var express = require("express");
 var router = express.Router();
-var Vote = require("../models/votes");
+var Poll = require("../models/votes");
 
 // INDEX ROUTE - SHOW ALL VOTES
 router.get("/", function(req, res) {
-  res.render("votes/index");
+  Poll.find({}, function(err, allPolls) {
+    if (err) {
+      console.log(err);
+    } else {
+     res.render("votes/index", {polls: allPolls});
+    }
+  });
 });
 
 // CREATE ROUTE - ADD NEW VOTE
@@ -13,7 +19,7 @@ router.post("/", function(req, res) {
   var option1 = req.body.option1;
   var option2 = req.body.option2;
   var newPoll = {question: question, option1: option1, option2: option2};
-  Vote.create(newPoll, function(err, newlyCreatedPoll) {
+  Poll.create(newPoll, function(err, newlyCreatedPoll) {
     if (err) {
       console.log(err);
     } else {
