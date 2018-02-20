@@ -28,6 +28,7 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use(new passportLocal(User.authenticate()));
 
 app.use("/", indexRoute);
 app.use("/votes", voteRoute);
