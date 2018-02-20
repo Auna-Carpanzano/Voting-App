@@ -64,8 +64,14 @@ router.put("/:id", function(req, res) {
 });
 
 // DESTROY ROUTE - DELETE A POLL
-router.delete(":/id", function(req, res) {
-  res.redirect("/votes");
+router.delete("/:id", function(req, res) {
+  Poll.findByIdAndRemove(req.params.id, function(err) {
+    if (err) {
+      res.redirect("/votes");
+    } else {
+      res.redirect("/votes");
+    }
+  });
 });
 
 module.exports = router;
