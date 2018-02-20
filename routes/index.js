@@ -23,6 +23,10 @@ router.post("/register", function(req, res) {
     if (err) {
       return res.render("register", {error: err.message});
     }
+    passport.authenticate("local")(req, res, function() {
+      req.flash("success", "Welcome to the Voting App, " + user.username);
+      res.redirect("/votes");
+    });
   });
 });
 
