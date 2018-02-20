@@ -22,8 +22,9 @@
         <a class="nav-item nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="/register">Sign Up</a>
       <% } else { %>
-        <a href="#">Signed In As <%= currentUser.username %></a>
-        <a class="nav-item nav-link" href="/logout">Logout</a>
+          <a href="#" class="nav-item"><i class="fas fa-user-circle fa-2x"></i></a>
+          <a href="#" class="nav-item nav-link"><%= currentUser.username %></a>
+          <a class="nav-item nav-link" href="/logout">Logout</a>
       <% } %>
     </div>
   </div>
