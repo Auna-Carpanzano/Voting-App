@@ -1,3 +1,5 @@
 <% include ../partials/header %>
 <h1>EDIT POLL <%= poll.question %></h1>
+<form action="/votes/<%=poll._id%>?_method=PUT" method="POST">
+</form>
 <% include ../partials/footer %>
