@@ -16,4 +16,9 @@ router.get("/register", function(req, res) {
   res.render("register");
 });
 
+// SIGNUP LOGIC
+router.post("/register", function(req, res) {
+  var newUser = new User({username: req.body.username});
+});
+
 module.exports = router;
