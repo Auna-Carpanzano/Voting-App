@@ -45,7 +45,7 @@ router.post("/register", function(req, res) {
 // LOGOUT ROUTE
 router.get("/logout", function(req, res) {
   req.logout();
-  req.flash("sucess", "Logged out!");
+  req.flash("success", "Logged out!");
   res.redirect("/votes");
 });
 
