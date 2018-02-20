@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+<div class="container text-center">
+  <h2> <%= poll.question %> </h2>
+  <select class="custom-select">
+    <option value="<% poll.option1 %>"><%= poll.option1 %></option>
+    <option value="<% poll.option2 %>"><%= poll.option2 %></option>
+  </select>
+  <a href="/votes/<%= poll._id %>/edit" class="btn btn-warning">Edit</a>
+  <form action="/votes/<%=poll._id%>?_method=DELETE" method="POST" class="delete">
+    <button class="btn btn-danger">Delete</button>
+  </form>
+</div>
+<% include ../partials/footer %>

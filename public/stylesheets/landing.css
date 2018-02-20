@@ -1,0 +1,12 @@
+.card {
+  display: inline-block;
+  width: 18rem;
+  margin: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.section-2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
