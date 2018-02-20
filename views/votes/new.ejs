@@ -1,5 +1,8 @@
 <% include ../partials/header %>
 <h1>Make a new poll</h1>
 <form action="/votes" method="POST">
+  <input type="text" placeholder="Question" name="question">
+  <input type="text" placeholder="Option 1" name="option1">
+  <input type="text" placeholder="Option 2" name="option2">
 </form>
 <% include ../partials/footer %>
