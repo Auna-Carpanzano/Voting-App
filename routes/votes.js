@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Poll = require("../models/votes");
 
-// INDEX ROUTE - SHOW ALL VOTES
+// INDEX ROUTE - SHOW ALL POLLS
 router.get("/", function(req, res) {
   Poll.find({}, function(err, allPolls) {
     if (err) {
@@ -13,7 +13,7 @@ router.get("/", function(req, res) {
   });
 });
 
-// CREATE ROUTE - ADD NEW VOTE
+// CREATE ROUTE - ADD NEW POLL
 router.post("/", function(req, res) {
   var question = req.body.question;
   var option1 = req.body.option1;
@@ -28,12 +28,12 @@ router.post("/", function(req, res) {
   });
 });
 
-// NEW ROUTE - SHOW FORM TO CREATE NEW VOTE
+// NEW ROUTE - SHOW FORM TO CREATE NEW POLL
 router.get("/new", function(req, res) {
   res.render("votes/new");
 });
 
-// SHOW ROUTE - SHOW INFO ABOUT ONE VOTE
+// SHOW ROUTE - SHOW INFO ABOUT ONE POLL
 router.get("/:id", function(req, res) {
   Poll.findById(req.params.id).exec(function(err, foundPoll) {
     if (err || !foundPoll) {
@@ -52,7 +52,7 @@ router.get("/:id/edit", function(req, res) {
   });
 });
 
-// UPDATE ROUTE - SHOW UPDATED VOTE
+// UPDATE ROUTE - SHOW UPDATED POLL
 router.put("/:id", function(req, res) {
   Poll.findByIdAndUpdate(req.params.id, req.body.poll, function(err, updatedPoll) {
     if (err) {
@@ -63,7 +63,7 @@ router.put("/:id", function(req, res) {
   });
 });
 
-// DESTROY ROUTE - DELETE A VOTE
+// DESTROY ROUTE - DELETE A POLL
 router.delete(":/id", function(req, res) {
   res.redirect("/votes");
 });
