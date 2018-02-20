@@ -19,6 +19,13 @@ app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
+// USER AUTHENTICATION
+app.use(require("express-session")({
+  secret: "Vote",
+  resave: false,
+  saveUninitialized: false
+}));
+
 app.use("/", indexRoute);
 app.use("/votes", voteRoute);
 
