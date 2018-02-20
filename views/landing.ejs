@@ -29,6 +29,18 @@
   </div>
 </nav>
 <div class="container">
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+  <% } %>
+</div>
+<div class="container">
   <div class="text-center">
     <h1 class="display-1 mb-4">Voting App</h1>
     <h2 class="mb-4">Lorem ipsum dolor sit amet</h2>
