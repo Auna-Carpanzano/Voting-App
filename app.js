@@ -13,6 +13,7 @@ var express = require("express"),
 var voteRoute = require("./routes/votes"),
     indexRoute = require("./routes/index");
 
+// CONNECT REQUIRES
 mongoose.connect("mongodb://localhost/voting_app");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
@@ -39,6 +40,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+// ATTACH ROUTE PREFIXES
 app.use("/", indexRoute);
 app.use("/votes", voteRoute);
 
