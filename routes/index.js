@@ -11,6 +11,16 @@ router.get("/login", function(req, res) {
   res.render("login");
 });
 
+// LOGIN LOGIC
+router.post("/login", passport.authenticate("local",
+  {
+    successRedirect: "/votes",
+    failtureRedirect: "/login"
+
+}), function(req, res) {
+
+});
+
 // SHOW SIGNUP FORM
 router.get("/register", function(req, res) {
   res.render("register");
