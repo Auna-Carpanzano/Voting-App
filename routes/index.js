@@ -17,7 +17,7 @@ router.get("/login", function(req, res) {
 router.post("/login", passport.authenticate("local",
   {
     successRedirect: "/votes",
-    failtureRedirect: "/login"
+    failureRedirect: "/login"
 
 }), function(req, res) {
 
