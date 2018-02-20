@@ -33,9 +33,16 @@ router.get("/new", function(req, res) {
   res.render("votes/new");
 });
 
-// READ ROUTE - SHOW INFO ABOUT ONE VOTE
+// SHOW ROUTE - SHOW INFO ABOUT ONE VOTE
 router.get("/:id", function(req, res) {
-  res.render("votes/show");
+  Poll.findById(req.params.id).exec(function(err, foundPoll) {
+    if (err || !foundPoll) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("votes/show", {poll: foundPoll});
+    }
+  });
 });
 
 // EDIT ROUTE - SHOW FORM TO EDIT
