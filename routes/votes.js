@@ -54,11 +54,13 @@ router.get("/:id/edit", function(req, res) {
 
 // UPDATE ROUTE - SHOW UPDATED VOTE
 router.put("/:id", function(req, res) {
-  if (err) {
-    res.redirect("/votes");
-  } else {
-    res.redirect("/votes/" + req.params.id);
-  }
+  Poll.findByIdAndUpdate(req.params.id, req.body.poll, function(err, updatedPoll) {
+    if (err) {
+      res.redirect("/votes");
+    } else {
+      res.redirect("/votes/" + req.params.id);
+    }
+  });
 });
 
 // DESTROY ROUTE - DELETE A VOTE
