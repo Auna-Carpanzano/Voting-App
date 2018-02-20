@@ -47,7 +47,9 @@ router.get("/:id", function(req, res) {
 
 // EDIT ROUTE - SHOW FORM TO EDIT
 router.get("/:id/edit", function(req, res) {
-  res.render("votes/edit");
+  Poll.findById(req.params.id, function(err, foundPoll) {
+    res.render("votes/edit", {poll: foundPoll});
+  });
 });
 
 // UPDATE ROUTE - SHOW UPDATED VOTE
