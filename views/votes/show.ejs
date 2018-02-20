@@ -1,5 +1,9 @@
 <% include ../partials/header %>
 <div class="container text-center">
   <h2> <%= poll.question %> </h2>
+  <select class="custom-select">
+    <option value="<% poll.option1 %>"><%= poll.option1 %></option>
+    <option value="<% poll.option2 %>"><%= poll.option2 %></option>
+  </select>
 </div>
 <% include ../partials/footer %>
