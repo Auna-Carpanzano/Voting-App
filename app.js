@@ -5,7 +5,8 @@ var express = require("express"),
     flash = require("connect-flash"),
     passport = require("passport"),
     passportLocal = require("passport-local"),
-    methodOverride = require("method-override");
+    methodOverride = require("method-override"),
+    Vote = require("./models/votes");
 
 // REQUIRE ROUTES
 var voteRoute = require("./routes/votes"),
