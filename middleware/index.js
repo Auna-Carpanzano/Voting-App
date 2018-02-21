@@ -1,7 +1,7 @@
 var Poll = require("../models/votes");
-var middleware = {};
+var middlewareObj = {};
 
-middleware.isLoggedIn = function(req, res, next) {
+middlewareObj.isLoggedIn = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
@@ -9,4 +9,4 @@ middleware.isLoggedIn = function(req, res, next) {
   res.redirect("/login");
 };
 
-module.exports = middleware;
+module.exports = middlewareObj;
