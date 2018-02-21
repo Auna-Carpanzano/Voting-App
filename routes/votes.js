@@ -51,14 +51,14 @@ router.get("/:id", function(req, res) {
 });
 
 // EDIT ROUTE - SHOW FORM TO EDIT
-router.get("/:id/edit", function(req, res) {
+router.get("/:id/edit", middleware.checkPollOwnership, function(req, res) {
   Poll.findById(req.params.id, function(err, foundPoll) {
     res.render("votes/edit", {poll: foundPoll});
   });
 });
 
 // UPDATE ROUTE - SHOW UPDATED POLL
-router.put("/:id", function(req, res) {
+router.put("/:id", middleware.checkPollOwnership, function(req, res) {
   Poll.findByIdAndUpdate(req.params.id, req.body.poll, function(err, updatedPoll) {
     if (err) {
       res.redirect("/votes");
@@ -69,7 +69,7 @@ router.put("/:id", function(req, res) {
 });
 
 // DESTROY ROUTE - DELETE A POLL
-router.delete("/:id", function(req, res) {
+router.delete("/:id", middleware.checkPollOwnership, function(req, res) {
   Poll.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       res.redirect("/votes");
