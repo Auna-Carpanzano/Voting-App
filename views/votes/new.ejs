@@ -1,9 +1,22 @@
 <% include ../partials/header %>
-<h1>Make a new poll</h1>
-<form action="/votes" method="POST">
-  <input type="text" placeholder="Question" name="question">
-  <input type="text" placeholder="Option 1" name="option1">
-  <input type="text" placeholder="Option 2" name="option2">
-  <button class="btn btn-primary">Submit</button>
-</form>
+<div class="container">
+  <h1 class="display-4 text-center">Make a new poll</h1>
+  <form action="/votes" method="POST">
+    <div class="form-group">
+      <label for="question">Question</label>
+      <input type="text" placeholder="Question" name="question" class="form-control" id="question" aria-describedby="question">
+    </div>
+    <div class="form-group">
+      <label for="password">Option 1</label>
+      <input type="text" placeholder="Option 1" name="option1" class="form-control" id="option1" aria-describedby="option 1">
+    </div>
+    <div class="form-group">
+      <label for="password">Option 2</label>
+      <input type="text" placeholder="Option 2" name="option2" class="form-control" id="option2" aria-describedby="option 2">
+    </div>
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
 <% include ../partials/footer %>

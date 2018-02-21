@@ -1,6 +1,7 @@
 <% include ../partials/header %>
 <h1>POLLS PAGE</h1>
 <a href="/votes/new" class="btn btn-primary">Create New Poll</a>
+<a href="/mypolls" class="btn btn-success">My Polls</a>
 <% polls.forEach(function(poll) { %>
   <h2> <%= poll.question %> </h2>
   <a href="/votes/<%= poll._id %>" class="btn btn-info">Vote</a>

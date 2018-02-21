@@ -1,10 +1,23 @@
 <% include ../partials/header %>
-<h1>EDIT POLL <%= poll.question %></h1>
-<form action="/votes/<%=poll._id%>?_method=PUT" method="POST">
-  <input type="text" value="<%= poll.question %>" name="poll[question]">
-  <input type="text" value="<%= poll.option1 %>" name="poll[option1]">
-  <input type="text" value="<%= poll.option2 %>" name="poll[option2]">
-  <button class="btn btn-primary">Submit</button>
-</form>
-<a href="/votes" class="btn btn-secondary">Go back</a>
+<div class="container">
+  <h1 class="display-4 text-center">Edit poll: <%= poll.question %></h1>
+  <form action="/votes/<%=poll._id%>?_method=PUT" method="POST">
+    <div class="form-group">
+      <label for="question">Question</label>
+      <input type="text" value="<%= poll.question %>" name="poll[question]" class="form-control" aria-describedby="Edit question">
+    </div>
+    <div class="form-group">
+      <label for="password">Option 1</label>
+      <input type="text" value="<%= poll.option1 %>" name="poll[option1]" class="form-control" aria-describedby="Edit option 1">
+    </div>
+    <div class="form-group">
+      <label for="password">Option 2</label>
+      <input type="text" value="<%= poll.option2 %>" name="poll[option2]" class="form-control" aria-describedby="Edit option 2">
+    </div>
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  <a href="/votes" class="btn btn-secondary">Go back</a>
+</div>
 <% include ../partials/footer %>

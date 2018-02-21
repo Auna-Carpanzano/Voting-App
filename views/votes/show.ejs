@@ -5,9 +5,12 @@
     <option value="<% poll.option1 %>"><%= poll.option1 %></option>
     <option value="<% poll.option2 %>"><%= poll.option2 %></option>
   </select>
-  <a href="/votes/<%= poll._id %>/edit" class="btn btn-warning">Edit</a>
-  <form action="/votes/<%=poll._id%>?_method=DELETE" method="POST" class="delete">
-    <button class="btn btn-danger">Delete</button>
-  </form>
+  <h5><em>Submitted by: <%= poll.author.username %></em></h5>
+  <% if (currentUser && poll.author.id.equals(currentUser._id)) { %>
+    <a href="/votes/<%= poll._id %>/edit" class="btn btn-warning">Edit</a>
+    <form action="/votes/<%=poll._id%>?_method=DELETE" method="POST" class="delete">
+      <button class="btn btn-danger">Delete</button>
+    </form>
+  <% } %>
 </div>
 <% include ../partials/footer %>

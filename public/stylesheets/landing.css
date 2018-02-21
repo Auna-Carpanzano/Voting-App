@@ -10,3 +10,8 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}

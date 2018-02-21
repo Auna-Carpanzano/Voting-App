@@ -1,6 +1,7 @@
-var express = require("express");
-var router = express.Router();
-var Poll = require("../models/votes");
+var express = require("express"),
+    router = express.Router(),
+    Poll = require("../models/votes"),
+    middleware = require("../middleware");
 
 // INDEX ROUTE - SHOW ALL POLLS
 router.get("/", function(req, res) {
@@ -14,11 +15,15 @@ router.get("/", function(req, res) {
 });
 
 // CREATE ROUTE - ADD NEW POLL
-router.post("/", function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
   var question = req.body.question;
   var option1 = req.body.option1;
   var option2 = req.body.option2;
-  var newPoll = {question: question, option1: option1, option2: option2};
+  var author = {
+    id: req.user._id,
+    username: req.user.username
+  }
+  var newPoll = {question: question, option1: option1, option2: option2, author: author};
   Poll.create(newPoll, function(err, newlyCreatedPoll) {
     if (err) {
       console.log(err);
@@ -29,7 +34,7 @@ router.post("/", function(req, res) {
 });
 
 // NEW ROUTE - SHOW FORM TO CREATE NEW POLL
-router.get("/new", function(req, res) {
+router.get("/new", middleware.isLoggedIn, function(req, res) {
   res.render("votes/new");
 });
 
@@ -46,14 +51,14 @@ router.get("/:id", function(req, res) {
 });
 
 // EDIT ROUTE - SHOW FORM TO EDIT
-router.get("/:id/edit", function(req, res) {
+router.get("/:id/edit", middleware.checkPollOwnership, function(req, res) {
   Poll.findById(req.params.id, function(err, foundPoll) {
     res.render("votes/edit", {poll: foundPoll});
   });
 });
 
 // UPDATE ROUTE - SHOW UPDATED POLL
-router.put("/:id", function(req, res) {
+router.put("/:id", middleware.checkPollOwnership, function(req, res) {
   Poll.findByIdAndUpdate(req.params.id, req.body.poll, function(err, updatedPoll) {
     if (err) {
       res.redirect("/votes");
@@ -64,7 +69,7 @@ router.put("/:id", function(req, res) {
 });
 
 // DESTROY ROUTE - DELETE A POLL
-router.delete("/:id", function(req, res) {
+router.delete("/:id", middleware.checkPollOwnership, function(req, res) {
   Poll.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       res.redirect("/votes");
