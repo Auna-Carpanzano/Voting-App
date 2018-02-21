@@ -6,6 +6,10 @@
       <label for="question">Question</label>
       <input type="text" value="<%= poll.question %>" name="poll[question]" class="form-control" aria-describedby="Edit question">
     </div>
+    <div class="form-group">
+      <label for="password">Option 1</label>
+      <input type="text" value="<%= poll.option1 %>" name="poll[option1]" class="form-control" aria-describedby="Edit option 1">
+    </div>
   </form>
 </div>
 <% include ../partials/footer %>
