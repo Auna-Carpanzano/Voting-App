@@ -15,7 +15,7 @@ router.get("/", function(req, res) {
 });
 
 // CREATE ROUTE - ADD NEW POLL
-router.post("/", function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
   var question = req.body.question;
   var option1 = req.body.option1;
   var option2 = req.body.option2;
@@ -34,7 +34,7 @@ router.post("/", function(req, res) {
 });
 
 // NEW ROUTE - SHOW FORM TO CREATE NEW POLL
-router.get("/new", function(req, res) {
+router.get("/new", middleware.isLoggedIn, function(req, res) {
   res.render("votes/new");
 });
 
