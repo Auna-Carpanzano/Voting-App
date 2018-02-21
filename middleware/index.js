@@ -11,6 +11,12 @@ middlewareObj.isLoggedIn = function(req, res, next) {
 
 middlewareObj.checkPollOwnership = function(req, res, next) {
   if (req.isAuthenticated()) {
+    Poll.findById(req.params.id, function(err, foundPoll) {
+      if (err || !foundPoll) {
+        req.flash("error", "Poll not found");
+        res.redirect("back");
+      }
+    });
   }
 }
 
