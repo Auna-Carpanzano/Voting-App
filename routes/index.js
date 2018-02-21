@@ -2,7 +2,8 @@ var express = require("express"),
     router = express.Router(),
     passport = require("passport"),
     User = require("../models/users"),
-    Poll = require("../models/votes");
+    Poll = require("../models/votes"),
+    middleware = require("../middleware");
 
 // ROOT ROUTE
 router.get("/", function(req, res) {
@@ -51,7 +52,7 @@ router.get("/logout", function(req, res) {
 });
 
 // MY POLLS ROUTE
-router.get("/mypolls", function(req, res) {
+router.get("/mypolls", middleware.isLoggedIn, function(req, res) {
     Poll.find({}, function(err, allPolls) {
     if (err) {
       console.log(err);
