@@ -18,7 +18,11 @@ router.post("/", function(req, res) {
   var question = req.body.question;
   var option1 = req.body.option1;
   var option2 = req.body.option2;
-  var newPoll = {question: question, option1: option1, option2: option2};
+  var author = {
+    id: req.user._id,
+    username: req.user.username
+  }
+  var newPoll = {question: question, option1: option1, option2: option2, author: author};
   Poll.create(newPoll, function(err, newlyCreatedPoll) {
     if (err) {
       console.log(err);
