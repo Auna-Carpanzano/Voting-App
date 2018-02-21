@@ -2,6 +2,10 @@
 <div class="container">
   <h1 class="display-4 text-center">Make a new poll</h1>
   <form action="/votes" method="POST">
+    <div class="form-group">
+      <label for="question">Question</label>
+      <input type="text" placeholder="Question" name="question" class="form-control" id="question" aria-describedby="question">
+    </div>
   </form>
 </div>
 <% include ../partials/footer %>
