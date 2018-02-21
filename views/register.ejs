@@ -2,6 +2,10 @@
 <div class="container">
   <h1 class="display-4 text-center">Sign up</h1>
   <form action="/register" method="POST">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username" name="username">
+    </div>
   </form>
 </div>
 <% include ./partials/footer %>
