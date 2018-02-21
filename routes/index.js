@@ -49,4 +49,15 @@ router.get("/logout", function(req, res) {
   res.redirect("/votes");
 });
 
+// MY POLLS ROUTE
+router.get("/mypolls", function(req, res) {
+    Poll.find({}, function(err, allPolls) {
+    if (err) {
+      console.log(err);
+    } else {
+     res.render("mypolls", {polls: allPolls});
+    }
+  });
+});
+
 module.exports = router;
