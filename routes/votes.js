@@ -1,6 +1,7 @@
-var express = require("express");
-var router = express.Router();
-var Poll = require("../models/votes");
+var express = require("express"),
+    router = express.Router(),
+    Poll = require("../models/votes"),
+    middleware = require("../middleware");
 
 // INDEX ROUTE - SHOW ALL POLLS
 router.get("/", function(req, res) {
