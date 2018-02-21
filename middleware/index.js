@@ -9,4 +9,9 @@ middlewareObj.isLoggedIn = function(req, res, next) {
   res.redirect("/login");
 };
 
+middlewareObj.checkPollOwnership = function(req, res, next) {
+  if (req.isAuthenticated()) {
+  }
+}
+
 module.exports = middlewareObj;
