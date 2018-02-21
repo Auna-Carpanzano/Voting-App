@@ -1,7 +1,8 @@
 var express = require("express"),
     router = express.Router(),
     passport = require("passport"),
-    User = require("../models/users");
+    User = require("../models/users"),
+    Poll = require("../models/votes");
 
 // ROOT ROUTE
 router.get("/", function(req, res) {
