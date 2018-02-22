@@ -5,9 +5,14 @@
   <a href="/votes" class="btn btn-success">All Polls</a>
   <div class="container mt-4">
     <% polls.forEach(function(poll) { %>
-       <% if (currentUser && poll.author.id.equals(currentUser._id)) { %>
-       <% }; %>
+    <% if (currentUser && poll.author.id.equals(currentUser._id)) { %>
+    <ul class="list-group">
+      <li class="list-group-item">
+
+      </li>
+    <% }; %>
     <% }); %>
+    </ul>
   </div>
 </div>
 <% include ./partials/footer %>
