@@ -7,6 +7,7 @@
     <ul class="list-group">
       <% polls.forEach(function(poll) { %>
         <li class="list-group-item">
+          <h3> <%- poll.question.substring(0, 70) %> </h3>
         </li>
       <% }); %>
     </ul>
