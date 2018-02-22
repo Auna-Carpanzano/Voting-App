@@ -5,6 +5,8 @@
   <a href="/votes" class="btn btn-success">All Polls</a>
   <div class="container mt-4">
     <% polls.forEach(function(poll) { %>
+       <% if (currentUser && poll.author.id.equals(currentUser._id)) { %>
+       <% }; %>
     <% }); %>
   </div>
 </div>
