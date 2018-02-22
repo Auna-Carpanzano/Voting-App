@@ -11,6 +11,7 @@
           <% if (poll.question.length > 70) { %>
             <h3 class="mr-4">...</h3>
           <% } %>
+          <a href="/votes/<%= poll._id %>" class="btn btn-info">Vote</a>
         </li>
       <% }); %>
     </ul>
