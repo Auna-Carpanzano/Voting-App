@@ -1,9 +1,20 @@
 <% include ../partials/header %>
-<h1>POLLS PAGE</h1>
-<a href="/votes/new" class="btn btn-primary">Create New Poll</a>
-<a href="/mypolls" class="btn btn-success">My Polls</a>
-<% polls.forEach(function(poll) { %>
-  <h2> <%= poll.question %> </h2>
-  <a href="/votes/<%= poll._id %>" class="btn btn-info">Vote</a>
-<% }); %>
+<div class="container text-center">
+  <h1 class="display-4">ALL POLLS</h1>
+  <a href="/votes/new" class="btn btn-primary">New Poll</a>
+  <a href="/mypolls" class="btn btn-success">My Polls</a>
+  <div class="container mt-4">
+    <ul class="list-group">
+      <% polls.forEach(function(poll) { %>
+        <li class="list-group-item">
+          <h3> <%- poll.question.substring(0, 70) %> </h3>
+          <% if (poll.question.length > 70) { %>
+            <h3 class="mr-4">...</h3>
+          <% } %>
+          <a href="/votes/<%= poll._id %>" class="btn btn-info">Vote</a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</div>
 <% include ../partials/footer %>

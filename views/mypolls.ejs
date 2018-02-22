@@ -1,9 +1,19 @@
 <% include ./partials/header %>
-  <h1>My Polls</h1>
-  <% polls.forEach(function(poll) { %>
+<div class="container text-center">
+  <h1 class="display-4">MY POLLS</h1>
+  <a href="/votes/new" class="btn btn-primary">New Poll</a>
+  <a href="/votes" class="btn btn-success">All Polls</a>
+  <div class="container mt-4">
+    <% polls.forEach(function(poll) { %>
     <% if (currentUser && poll.author.id.equals(currentUser._id)) { %>
-      <h2> <%= poll.question %> </h2>
-      <a href="/votes/<%= poll._id %>" class="btn btn-info">See poll</a>
-    <% } %>
-  <% }); %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h3> <%- poll.question.substring(0, 70) %> </h3>
+        <a href="/votes/<%= poll._id %>" class="btn btn-info">See poll</a>
+      </li>
+    <% }; %>
+    <% }); %>
+    </ul>
+  </div>
+</div>
 <% include ./partials/footer %>
